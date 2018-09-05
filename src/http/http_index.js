@@ -1,7 +1,10 @@
 import Axios from 'axios'
 
+const host_dev = "http://localhost:3000/api"
+const host_prod = "http://120.79.241.216:3000/api"
+
 const axios_http = Axios.create({
-  baseURL: 'http://192.168.50.129:3000/api',
+  baseURL: host_dev,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
   }/*,
@@ -19,6 +22,10 @@ const axios_http = Axios.create({
 
 // 添加响应拦截器
 axios_http.interceptors.request.use(function (request) {
+  if(process.env.NODE_ENV !== "development"){
+    request.baseURL = host_prod
+  }
+
   //全部转换为post方法
   if (request.method === 'get') {
     request.method = 'post'
