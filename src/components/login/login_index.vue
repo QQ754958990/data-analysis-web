@@ -87,7 +87,6 @@
         height: 60%;
         * {
           margin: 0.1rem;
-          color: white;
         }
         label, input {
           width: 100%;

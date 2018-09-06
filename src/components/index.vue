@@ -2,7 +2,7 @@
   <section class="index_div_wrap">
     <article v-if="save_data || delete_current || export_current" class="indexWrap_div_hint row">
       <input v-if="save_data" v-model="save_file_name" placeholder="输入文件名"></input>
-      <p v-if="save_data" @click.prevent="confirm_save_fn">确认修改</p>
+      <p v-if="save_data" @click.prevent="confirm_save_fn">确认保存</p>
 
       <input v-if="delete_current" list="exports" v-model="delete_current_name" placeholder="选择文件"></input>
       <p v-if="delete_current" @click.prevent="delete_data_fn">确认删除</p>
@@ -252,6 +252,7 @@
           if (item['file_name'] === _self.export_current_name.replace('.json', '')) {
             _self.funDownload(JSON.stringify(item['save_data']), _self.export_current_name)
             _self.export_current = false
+            alert('导出文件成功')
             return true
           }
         })
@@ -265,6 +266,7 @@
               _self.module_data_list.splice(index,1)
               _self.delete_current_name = null
               _self.delete_current = false
+              alert('删除文件成功')
             })
             return true
           }
