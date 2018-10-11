@@ -12,7 +12,7 @@
 
     </article>
     <article v-if="!module_type || add_attr || add_cite" class="indexWrap_div_add row">
-      <input v-if="!module_type" list="contents" v-model="module_type" placeholder="首层结构"></input>
+      <input v-if="!module_type" list="contents" v-model="module_type" placeholder="首页结构"></input>
       <div v-if="add_attr">
         <textarea v-if="module_type==='object'" v-model="attr_key" placeholder="属性名称"/>
         <textarea v-model="attr_value" :placeholder="module_type==='object'?'属性赋值':'项目赋值'"/>
@@ -50,8 +50,8 @@
     </main>
 
     <datalist id="contents">
-      <option value="object">对象</option>
-      <option value="array">数组</option>
+      <option value="object">离散</option>
+      <option value="array">线性</option>
     </datalist>
 
     <datalist id="exports">
@@ -303,7 +303,7 @@
     align-items: center;
     height: 100%;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     background-color: #2c3e50;
     color: white;
     * {
